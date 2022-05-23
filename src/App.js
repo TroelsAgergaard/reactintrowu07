@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "./Button";
-import Home from "./Home";
-import Input from "./Input";
 import Navbar from "./Navbar";
+import useFetch from "./useFetch";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const styles = {
@@ -18,8 +17,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div css={styles.content}>
-        <Input />
-        <Home />
+        <Outlet />
       </div>
     </div>
   );
