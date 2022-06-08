@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 const BlogList = ({ blogs, title }) => {
-  // const blogs = props.blogs;
+  const { theme } = useContext(ThemeContext);
 
   const styles = {
     blogpreview: css`
@@ -18,15 +20,18 @@ const BlogList = ({ blogs, title }) => {
         margin-bottom: 8px;
       }
     `,
+    color: css`
+      color: ${theme.darkMode ? "#fff" : "#333"};
+    `,
   };
 
   return (
     <div className="blog-list">
-      <h2>{title}</h2>
+      <h2 css={styles.color}>{title}</h2>
       {blogs.map((blog) => (
         <div css={styles.blogpreview} key={blog.id}>
           <h2>{blog.title}</h2>
-          <p>Written by {blog.author}</p>
+          <p css={styles.color}>Written by {blog.author}</p>
         </div>
       ))}
     </div>
